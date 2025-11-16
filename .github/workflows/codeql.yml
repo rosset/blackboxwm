@@ -95,11 +95,12 @@ jobs:
       if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        # Regenerate the build system if needed
+        git describe --always --dirty || true
         if [ -f autogen.sh ]; then
           sh autogen.sh
+        else
+          autoreconf -fi
         fi
-        autoreconf -vfi
         ./configure --enable-shared --disable-static
         make -j"$(nproc)" -Wall
         exit 1
