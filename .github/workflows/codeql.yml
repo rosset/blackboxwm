@@ -47,7 +47,7 @@ jobs:
       - name: Install toolchain in Fedora
         run: |
           sudo dnf install -y \
-          git autoconf automake libtool gettext gettext-devel gcc make pkg-config lzip \ 
+          git autoconf automake libtool gettext gettext-devel gcc make pkg-config lzip \
           libXt-devel libXft-devel libXext-devel gcc binutils redhat-rpm-config gcc-c++
 
       - name: Initialize CodeQL
