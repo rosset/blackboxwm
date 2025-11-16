@@ -17,7 +17,7 @@ on:
   pull_request:
     branches: [ "master" ]
   schedule:
-    - cron: '42 20 * * 4'
+    - cron: '30 22 * * 1'
 
 jobs:
   analyze:
@@ -43,8 +43,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
+        - language: actions
+          build-mode: none
         - language: c-cpp
-          build-mode: autobuild
+          build-mode: manual
         # CodeQL supports the following values keywords for 'language': 'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'rust', 'swift'
         # Use `c-cpp` to analyze code written in C, C++ or both
         # Use 'java-kotlin' to analyze code written in Java, Kotlin or both
@@ -93,8 +95,8 @@ jobs:
         echo '  make release'
         sh autogen.sh
         autoreconf -fiv
-        ./configure --enable-shared --disable-static
-        make build
+        sh configure --enable-shared --disable-static
+        make build -Wall
         exit 1
 
     - name: Perform CodeQL Analysis
