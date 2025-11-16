@@ -44,7 +44,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
     - name: Install toolchain in Fedora
       run: |
         sudo dnf install -y \
