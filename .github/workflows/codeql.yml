@@ -18,7 +18,7 @@ jobs:
     # Consider using larger runners or machines with greater resources for possible analysis time improvements.
     runs-on: ubuntu-latest
     container:
-      image: oraclelinux:9
+      image: oraclelinux:10
     permissions:
       security-events: write
       packages: read
